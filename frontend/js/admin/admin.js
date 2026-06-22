@@ -143,6 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     saveBlocksButton.addEventListener('click', async () => {
 
+        if (saveBlocksButton.disabled) {
+            return;
+        }
+
         const selectedKey =
             toKey(appState.selectedDate);
 
@@ -175,25 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     !bloqueosDelDia.includes(slot)
             );
 
-        console.log(
-            "Bloqueos ya guardados:",
-            bloqueosDelDia
-        );
-
-        console.log(
-            "Nuevos bloques:",
-            slotsNuevos
-        );
-
-        console.log(
-            "Fecha seleccionada:",
-            selectedKey
-        );
-
-        console.log(
-            "Bloqueos BD completos:",
-            bloqueos
-        );
 
         if (slotsNuevos.length === 0) {
 
@@ -203,6 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return;
         }
+
+        saveBlocksButton.disabled = true;
+        saveBlocksButton.textContent = "Guardando...";
 
         try {
 
@@ -231,10 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         horaFin
                 };
 
-                console.log(
-                    "Intentando guardar:",
-                    bloqueoData
-                );
 
                 const response =
                     await fetch(
@@ -278,6 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             console.error(error);
 
+        } finally {
+
+            saveBlocksButton.disabled = false;
+            saveBlocksButton.textContent = "Guardar bloqueo";
         }
 
     });
