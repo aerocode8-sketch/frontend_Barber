@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reserva tu cita online.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../../assets/images/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="../../assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../../css/client/booking.css">
+  <title>Barbería Platinum | Reserva tu cita</title>
+</head>
+
+<body>
+  <main class="booking-cont">
+    <a class="back" href="services.html">← Volver</a>
+    <section class="booking-header">
+      <h1>Reserva tu cita</h1>
+      <p>Servicio seleccionado: <span id="selected-service">Servicio</span></p>
+    </section>
+
+    <section class="section-cont">
+      <h3>Selecciona un barbero</h3>
+      <div class="cont" id="barbers-container"></div>
+    </section>
+
+    <section class="section-cont">
+      <h3>Selecciona una fecha</h3>
+      <div class="cont" id="days-container"></div>
+    </section>
+
+    <section class="section-cont">
+      <h3>Horarios disponibles</h3>
+      <p id="schedule-message">Selecciona un día para ver los horarios disponibles</p>
+      <div class="cont" id="hours-container"></div>
+    </section>
+
+    <section class="summary-section">
+      <h3>Resumen de tu cita</h3>
+      <p>Día: <span id="summary-day">-</span></p>
+      <p>Hora: <span id="summary-hour">-</span></p>
+      <p>Servicio: <span id="summary-service">-</span></p>
+      <p>Barbero: <span id="summary-barber">-</span></p>
+    </section>
+
+    <section class="confirm-section">
+      <button id="confirm-booking" type="button">Confirmar cita</button>
+    </section>
+
+  </main>
+  <script src="../../js/config.js"></script>
+  <script src="../../js/client/booking.js"></script>
+</body>
+
+</html>

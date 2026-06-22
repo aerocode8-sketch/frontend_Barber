@@ -1,0 +1,135 @@
+body {
+    background-color: #0f1115;
+    /* color de fondo de login */
+    color: white;
+    /* color del texto en login */
+    font-family: 'Inter', sans-serif;
+    /* fuente del texto*/
+    min-height: 100vh;
+    /* altura mínima del cuerpo para ocupar toda la pantalla */
+    display: flex;
+    /* usar flexbox para centrar el contenido */
+    justify-content: center;
+    /* centrar horizontalmente el contenido */
+    align-items: center;
+    /* centrar verticalmente el contenido */
+    padding: 20px;
+    /* espacio alrededor del contenido */
+
+}
+
+.back {
+    display: inline-block;
+    /* mostrar el enlace de volver como un bloque en línea para aplicar márgenes */
+    margin-bottom: 18px;
+    /* espacio inferior del enlace de volver para separar del contenido */
+    color: #ff8c00;
+    /* color del texto del enlace de volver */
+    text-decoration: none;
+    /* eliminar subrayado del enlace de volver */
+    font-weight: 600;
+    /* peso de la fuente del enlace de volver para resaltar el enlace */
+}
+
+.back:hover {
+    text-decoration: underline;
+    /* subrayar el texto al pasar el mouse por encima del enlace de volver */
+}
+
+.login-cont {
+    width: 90%;
+    /* ancho del contenedor de login 300px*/
+    max-width: 380px;
+    /* ancho máximo del contenedor de login */
+    padding: 25px;
+    /* espacio interno del contenedor de login */
+    background-color: #1a1d23;
+    /* color de fondo del contenedor de login */
+    border-radius: 20px;
+    /* bordes redondeados del contenedor de login */
+}
+
+.form-cont {
+    display: flex;
+    /* usar flexbox para centrar el contenido del formulario de login */
+    flex-direction: column;
+    /* dirección de los elementos del formulario en columna */
+}
+
+.field {
+    padding: 10px;
+    /* espacio interno de los campos de entrada */
+    display: flex;
+    /* tamaño del campo de entrada */
+    flex-direction: column;
+    /* dirección de los elementos del campo de entrada en columna */
+}
+
+.form-cont button {
+    margin-top: 15px;
+    /* espacio superior del botón de login */
+    padding: 10px;
+    /* espacio interno del botón de login */
+    border: none;
+    /* sin borde para el botón de login */
+    border-radius: 10px;
+    /* bordes redondeados para el botón de login */
+    background-color: #ff8c00;
+    /* color de fondo del botón de login */
+    color: white;
+    /* color del texto del botón de login */
+    cursor: pointer;
+    /* cursor en forma de mano al pasar sobre el botón de login */
+}
+
+
+.form-cont h1 {
+    margin-bottom: 1px;
+    /* espacio inferior del título del formulario de login */
+    text-align: center;
+    /* centrado del texto del enlace de registro */
+    color: #ffffff;
+    /* color del texto del enlace de registro */
+
+}
+
+.form-cont p {
+    text-align: center;
+    /* centrado del texto del enlace de registro */
+    color: #aaaaaa;
+    /* color del texto del enlace de registro */
+}
+
+.field input {
+    background-color: #2a2d35;
+    /* color de fondo de los campos de entrada */
+    color: #aaaaaa;
+    /* color del texto de los campos de entrada */
+    border: 1px solid #333333;
+    /* borde de los campos de entrada */
+    border-radius: 8px;
+    /* bordes redondeados para los campos de entrada */
+    padding: 10px;
+    /* espacio interno de los campos de entrada */
+}
+
+.field label {
+    font-weight: 500;
+    /* peso de la fuente de las etiquetas de los campos de entrada */
+    font-size: 14px;
+    /* tamaño de fuente de las etiquetas de los campos de entrada */
+    margin-bottom: 5px;
+    /* espacio inferior entre la etiqueta y el campo de entrada */
+    color: #ffffff;
+    /* color del texto de las etiquetas de los campos de entrada */
+
+}
+
+.logo {
+    display: block;
+    /* mostrar el logo como un bloque */
+    margin: 0 auto 0px;
+    /* centrar el logo y agregar espacio inferior */
+    width: 100px;
+    /* ancho del logo */
+}

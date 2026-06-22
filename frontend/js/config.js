@@ -1,0 +1,1 @@
+const API_URL = "https://backendbarber-production-b8aa.up.railway.app";

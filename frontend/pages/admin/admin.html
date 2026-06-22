@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel de administración de citas de barbería">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="../../assets/images/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="../../assets/images/favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/admin/admin.css">
+  <title>Barbería Platinum | Dashboard Admin</title>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a class="back" href="auth_admin.html">← Volver</a>
+    <div>
+      <p class="eyebrow">Panel admin</p>
+      <h1>Agenda y disponibilidad</h1>
+    </div>
+
+    <div class="profile">
+      <button class="profile-btn" aria-label="Perfil del administrador">
+        <!-- Icono de perfil (puede ser una imagen o un SVG) -->
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="content-inicio" class="tab-content active">
+      <div class="hero-banner">
+        <div>
+          <p class="hero-kicker">Resumen del día</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon orange">📅</div>
+          <div class="card-info">
+            <h2 data-stat="today-count">0</h2>
+            <p>Citas hoy</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon blue">🗓️</div>
+          <div class="card-info">
+            <h2 data-stat="assigned-count">0</h2>
+            <p>Citas asignadas</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon green">⛔</div>
+          <div class="card-info">
+            <h2 data-stat="blocked-count">0</h2>
+            <p>Bloqueos activos</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="today-appointments">
+        <div class="section-title">
+          <div>
+            <p class="section-kicker">Agenda</p>
+            <h2>Citas de hoy</h2>
+          </div>
+          <button class="ghost-button" data-jump-tab="content-reservas">Ver todas</button>
+        </div>
+
+        <div class="appointments" data-appointment-list="today"></div>
+      </section>
+    </section>
+
+    <section id="content-reservas" class="tab-content">
+      <div class="section-title">
+        <div>
+          <p class="section-kicker">Gestión</p>
+          <h2>Citas asignadas</h2>
+        </div>
+        <button class="ghost-button" data-jump-tab="content-horarios">Bloquear horario</button>
+      </div>
+
+
+      <div class="appointments" data-appointment-list="all"></div>
+    </section>
+
+    <section id="content-horarios" class="tab-content">
+      <div class="section-title">
+        <div>
+          <p class="section-kicker">Disponibilidad</p>
+          <h2>Bloquear días y horas</h2>
+        </div>
+        <button class="ghost-button" data-jump-tab="content-reservas">Volver a citas</button>
+      </div>
+
+      <div class="calendar-block">
+        <div class="calendar-container">
+          <div class="calendar-header">
+            <button class="nav-btn" type="button" data-calendar-nav="prev">◀</button>
+            <h3 id="calendar-title">Mayo 2026</h3>
+            <button class="nav-btn" type="button" data-calendar-nav="next">▶</button>
+          </div>
+
+          <div class="weekdays">
+            <div>Lun</div>
+            <div>Mar</div>
+            <div>Mié</div>
+            <div>Jue</div>
+            <div>Vie</div>
+            <div>Sáb</div>
+            <div>Dom</div>
+          </div>
+
+          <div class="days-grid" id="calendar-days"></div>
+        </div>
+
+        <div class="block-container">
+          <div class="block-header">
+            <div>
+              <p class="section-kicker">Bloqueo manual</p>
+              <h3 id="selected-day-label">Selecciona un día</h3>
+            </div>
+            <span class="status pending" id="day-status">Disponible</span>
+          </div>
+
+          <p class="block-description">
+            Elige un día y marca horas concretas, o bloquea toda la jornada si no vas a trabajar.
+          </p>
+
+          <div class="time-slots" id="time-slots"></div>
+
+          <div class="block-actions">
+            <button class="btn-full-day" type="button" id="btn-block-day">Bloquear día completo</button>
+            <button class="btn-save" type="button" id="btn-save-blocks">Guardar bloqueo</button>
+          </div>
+
+          <div class="blocked-summary">
+            <h4>Bloqueos del día</h4>
+            <ul id="blocked-summary-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="content-perfil" class="tab-content">
+      <div class="profile-section">
+        <div class="profile-card">
+          <p class="section-kicker">Cuenta</p>
+          <h2>Mi perfil</h2>
+
+          <div class="profile-info">
+            <p><strong>Nombre:</strong> <span id="perfilNombre"></span></p>
+            <p><strong>Email:</strong> <span id="perfilEmail"></span></p>
+            <p><strong>Teléfono:</strong> <span id="perfilTelefono"></span></p>
+            <p><strong>Local:</strong> Calle 41a # 26 - 134</p>
+          </div>
+          <div class="profile-actions">
+            <button id="logoutBtn" type="button">
+              Cerrar sesión
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn-item active" data-tab="content-inicio">
+      🏠
+      <span>Inicio</span>
+    </button>
+
+    <button class="nav-btn-item" data-tab="content-reservas">
+      📅
+      <span>Citas</span>
+    </button>
+
+    <button class="nav-btn-item" data-tab="content-horarios">
+      ⏰
+      <span>Bloqueos</span>
+    </button>
+
+    <button class="nav-btn-item" data-tab="content-perfil">
+      👤
+      <span>Perfil</span>
+    </button>
+  </nav>
+  <script src="../../js/config.js"></script>
+  <script src="../../js/admin/admin.js"></script>
+
+</body>
+
+</html>

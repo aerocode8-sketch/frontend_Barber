@@ -1,0 +1,107 @@
+body {
+  background-color: #0f1115;
+  /* color de fondo*/
+  color: white;
+  /* color del texto*/
+  font-family: 'Inter', sans-serif;
+  /* fuente del texto*/
+  margin: 0;
+  /* eliminar margen predeterminado */
+}
+
+.back {
+  display: inline-block;
+  /* mostrar como bloque en línea para aplicar márgenes */
+  margin: 20px 0 10px;
+  /* margen superior e inferior para separar del contenido */
+  margin-left: 60px;
+  /* margen izquierdo para separar del borde de la pantalla */
+  color: #ff8c00;
+  /* color del texto del botón de volver */
+  text-decoration: none;
+  /* eliminar subrayado del enlace */
+  font-weight: 600;
+  /* peso de la fuente para resaltar el botón de volver */
+}
+
+.back:hover {
+  text-decoration: underline;
+  /* subrayar el texto al pasar el mouse por encima del botón de volver */
+}
+
+.b-user {
+  color: #ff8c00;
+  /* color del texto del botón de usuario */
+}
+
+.services {
+  display: flex;
+  /* para mostrar las tarjetas de servicio en fila */
+  justify-content: center;
+  /* para centrar las tarjetas de servicio horizontalmente */
+  flex-wrap: wrap;
+  /* para permixtir que las tarjetas de servicio se ajusten a la pantalla */
+  gap: 10px;
+  /* espacio entre las tarjetas de servicio */
+}
+
+.service-card {
+  all: unset;
+  /* eliminar estilos predeterminados del botón */
+  background-color: #2a2d35;
+  /* color de fondo de los campos  */
+  border: 1px solid #333333;
+  /* borde de los campos */
+  border-radius: 20px;
+  /* bordes redondeados para los campos */
+  width: 100%;
+  /* ancho del contenedor */
+  max-width: 300px;
+  /* ancho máximo del contenedor */
+  padding: 20px;
+  /* espacio interno del contenedor */
+  margin: 7px;
+  /* espacio entre los contenedores */
+}
+
+.service-card:hover {
+  border-color: #ff8c00;
+  /* color del borde al pasar el mouse por encima de la tarjeta de servicio */
+  cursor: pointer;
+  /* cursor en forma de mano al pasar sobre la tarjeta de servicio */
+  transform: translateY(-4px);
+}
+
+.btn {
+  color: #ff8c00;
+  /* color del texto del botón */
+}
+
+.service-card:hover h2 {
+  color: #ff8c00;
+  /* cambia el color del h2 al pasar el mouse */
+}
+
+.section p {
+  color: #aaaaaa;
+}
+
+.section h1 {
+  margin-bottom: -5px;
+  /* espacio inferior del título */
+  text-align: center;
+  /* centrado del texto */
+  color: #ffffff;
+  /* color del texto */
+
+}
+
+.servis {
+  text-align: center;
+  /* centrado del texto */
+}
+
+.section {
+  padding: 20px;
+  /* espacio interno de la sección */
+}

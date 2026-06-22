@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reserva tu cita online.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../../assets/images/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="../../assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../../css/client/auth.css">
+  <title>Barbería Platinum | Datos de reserva</title>
+</head>
+
+<body>
+  <main class="login-cont">
+    <a class="back" href="../../../index.html">← Volver</a>
+    <form class="form-cont" id="form">
+      <img src="../../assets/images/perso.png" alt="Logo" class="logo">
+      <h1>Agenda tu cita en minutos</h1>
+      <p>Reserva rápida y sin complicaciones</p>
+
+      <div class="field">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required minlength="2" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+          placeholder="Tu nombre">
+      </div>
+
+      <div class="field">
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" required minlength="2" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+          placeholder="Tu apellido">
+      </div>
+
+      <div class="field">
+        <label for="telefono">Número de teléfono</label>
+        <input type="tel" id="telefono" name="telefono" required minlength="10" maxlength="10" pattern="[0-9]{10}"
+          inputmode="numeric" placeholder="Número de teléfono">
+      </div>
+
+      <button type="submit">Continuar</button>
+
+      <p>Tus datos solo serán utilizados para gestionar tu reserva.</p>
+    </form>
+  </main>
+  <script src="../../js/config.js"></script>
+  <script src="../../js/client/auth.js"></script>
+</body>
+
+</html>

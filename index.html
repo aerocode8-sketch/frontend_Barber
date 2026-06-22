@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reserva tu cita en línea en nuestra barbería.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="./frontend/assets/images/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="./frontend/assets/images/favicon.png" type="image/png">
+  <title>Barbería Platinum | Reserva tu cita en línea</title>
+  <link rel="stylesheet" href="./frontend/css/home.css">
+  <link rel="stylesheet" href="./frontend/css/client/footer.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="cont-nav">
+      <div class="logo-barber">Barbería Platinum</div>
+      <a href="./frontend/pages/client/auth.html"><button class="button-nav">Reservar cita</button></a>
+    </div>
+  </header>
+  <main>
+
+    <section class="cont-first">
+
+      <div class="container-first">
+
+        <h1>Tu estilo,<span class="destacado">nuestra prioridad</span></h1>
+        <p>Reserva tu cita en segundos y disfruta de un servicio profesional de barbería</p>
+        <a href="./frontend/pages/client/auth.html"><button type="button">Reserva tu cita ahora</button></a>
+
+      </div>
+
+      <div class="cont-img">
+        <img src="./frontend/assets/images/fachadabarber.jpg" alt="Imagen de barbería" class="img-barber">
+      </div>
+
+    </section>
+
+    <section class="cont-second">
+
+      <div class="container-second">
+
+        <h2>Nuestros servicios</h2>
+        <p>Ofrecemos una variedad de servicios para que luzcas siempre impecable.</p>
+
+        <div class="services">
+
+          <div class="service-card card1">
+            <h3>Corte de cabello</h3>
+          </div>
+
+          <div class="service-card card2">
+            <h3>Corte de cabello + Cejas</h3>
+          </div>
+
+          <div class="service-card card3">
+            <h3>Corte de cabello + Barba</h3>
+          </div>
+
+          <div class="service-card card4">
+            <h3>Arreglo de barba</h3>
+          </div>
+
+          <div class="service-card card5">
+            <h3>Combo Completo</h3>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner cont">
+      <div class="footer-block">
+        <h4>Contacto</h4>
+        <p>Tel: +57 316 513 4330<br>Dirección: Calle 41a # 26 - 134</p>
+      </div>
+      <div class="footer-block">
+        <h4>Horario</h4>
+        <p>Lun - Vie: 09:00 - 19:00<br>Sáb: 09:00 - 14:00</p>
+      </div>
+      <div class="footer-block">
+        <h4>Enlaces</h4>
+        <p>Servicios<br>Reservar</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© Barbería Platinum — <span id="year"></span></p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+
+</html>

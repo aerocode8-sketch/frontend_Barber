@@ -1,0 +1,324 @@
+body {
+  background-color: #0f1115;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+.back {
+  display: inline-block;
+  color: #ff8c00;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+/*  Reset general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*  Contenedor principal */
+.booking-cont {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/*  Tarjetas de bloques  */
+.booking-header,
+.section-cont,
+.summary-section,
+.confirm-section {
+  background: #171a20;
+  border: 1px solid #2c313a;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+/*  Encabezado de reserva  */
+.booking-header {
+  text-align: center;
+}
+
+/*  Títulos y textos del encabezado */
+.booking-header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin-bottom: 8px;
+}
+
+/*  Texto descriptivo del encabezado */
+.booking-header p {
+  color: #b6b6b6;
+  font-size: 0.98rem;
+}
+
+/*  Resumen de la cita */
+.booking-header span,
+#selected-service,
+#summary-service,
+#summary-day,
+#summary-hour,
+#summary-barber {
+  color: #ff8c00;
+  font-weight: 700;
+}
+
+/*  Seccion de dias */
+.section-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/*  Títulos de secciones */
+.section-cont h3,
+.summary-section h3 {
+  text-align: center;
+  font-size: 1.15rem;
+}
+
+/*  Contenedor de tarjetas de dias y horas */
+.cont {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.barber-photo {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  /* Crucial para que la cara no se vea estirada */
+  border-radius: 50%;
+  /* Esto la hace redonda y elegante */
+  display: block;
+  margin: 0 auto 10px auto;
+  /* Centra la foto dentro del botón */
+}
+
+/*  Tarjetas de dias y horas*/
+.calendar {
+  appearance: none;
+  border: 1px solid #333;
+  background: linear-gradient(180deg, #1e2128 0%, #171a20 100%);
+  min-width: 92px;
+  height: 128px;
+  border-radius: 18px;
+  color: #b7b7b7;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  touch-action: manipulation;
+}
+
+/* Evita que los textos internos interfieran con el clic de la tarjeta */
+.calendar p {
+  pointer-events: none;
+}
+
+/* Estilos específicos para los textos dentro de las tarjetas */
+.calendar p:first-child {
+  text-transform: lowercase;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Estilo para el texto del día dentro de la tarjeta */
+.calendar p:last-child {
+  font-size: 1rem;
+  color: #c9c9c9;
+}
+
+/* Estilo para el número del día dentro de la tarjeta */
+.calendar .num {
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.95rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* Estados visuales al pasar el cursor o enfocar con teclado */
+.calendar:hover,
+.calendar:focus-visible {
+  border-color: #ff8c00;
+  color: white;
+  cursor: pointer;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(255, 140, 0, 0.12);
+  outline: none;
+}
+
+/* Resalta el día seleccionado */
+.calendar.active-day {
+  border-color: #ff8c00;
+  background: linear-gradient(180deg, #242830 0%, #1d2027 100%);
+  color: white;
+  box-shadow: 0 0 0 1px rgba(255, 140, 0, 0.08), 0 12px 26px rgba(0, 0, 0, 0.3);
+}
+
+/* Marca visual para el día actual */
+.calendar.today-day {
+  position: relative;
+}
+
+/* Etiqueta "hoy" para el día actual */
+.calendar.today-day::before {
+  content: 'hoy';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #0f1115;
+  background: #ff8c00;
+  padding: 4px 7px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+/* Estilo especial para los botones de horarios */
+.calendar.hour-btn {
+  min-width: 108px;
+  height: 58px;
+  padding: 10px 8px;
+}
+
+/* Estilos para el texto dentro de los botones de horarios */
+.calendar.hour-btn p:first-child {
+  text-transform: none;
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Resalta el horario seleccionado */
+.calendar.active-hour {
+  border-color: #ff8c00;
+  background: #ff8c00;
+  color: #0f1115;
+  box-shadow: 0 12px 24px rgba(255, 140, 0, 0.22);
+}
+
+/* Resalta el barbero seleccionado */
+.calendar.active-barber {
+  border-color: #ff8c00;
+  background: linear-gradient(180deg, #242830 0%, #1d2027 100%);
+  color: white;
+  box-shadow: 0 0 0 1px rgba(255, 140, 0, 0.08), 0 12px 26px rgba(0, 0, 0, 0.3);
+}
+
+/* Asegura que el texto dentro del horario seleccionado sea legible */
+.calendar.active-hour p {
+  color: #0f1115;
+}
+
+/* Mensaje de ayuda para el usuario */
+#schedule-message {
+  display: block;
+  text-align: center;
+  color: #b6b6b6;
+  font-size: 0.98rem;
+  min-height: 22px;
+}
+
+/*  Resumen de cita */
+.summary-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/*  Estilos para los textos dentro del resumen de cita */
+.summary-section p {
+  color: #b6b6b6;
+  line-height: 1.5;
+}
+
+/* Resalta los detalles clave dentro del resumen de cita */
+.summary-section p span {
+  font-weight: 700;
+}
+
+/*  Boton final  */
+.confirm-section {
+  text-align: center;
+}
+
+/* Estilo para el botón de confirmación */
+#confirm-booking {
+  width: 100%;
+  max-width: 420px;
+  border: none;
+  background: #ff8c00;
+  color: #0f1115;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 15px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+/* Estados visuales para el botón de confirmación */
+#confirm-booking:hover,
+#confirm-booking:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(255, 140, 0, 0.25);
+  outline: none;
+}
+
+/* Estilo para el botón de confirmación cuando está deshabilitado */
+#confirm-booking:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/*  Ajuste para pantallas mas grandes  */
+@media (min-width: 768px) {
+  .booking-cont {
+    padding: 32px 24px 40px;
+    gap: 24px;
+  }
+
+  .section-cont,
+  .summary-section,
+  .confirm-section,
+  .booking-header {
+    padding: 22px;
+  }
+
+  .cont {
+    gap: 14px;
+  }
+
+  .calendar {
+    min-width: 100px;
+    height: 136px;
+  }
+
+  .calendar.hour-btn {
+    min-width: 118px;
+    height: 60px;
+  }
+}
