@@ -185,6 +185,16 @@ document.addEventListener('DOMContentLoaded', () => {
             slotsNuevos
         );
 
+        console.log(
+            "Fecha seleccionada:",
+            selectedKey
+        );
+
+        console.log(
+            "Bloqueos BD completos:",
+            bloqueos
+        );
+
         if (slotsNuevos.length === 0) {
 
             alert(
@@ -220,6 +230,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     hora_fin:
                         horaFin
                 };
+
+                console.log(
+                    "Intentando guardar:",
+                    bloqueoData
+                );
 
                 const response =
                     await fetch(
