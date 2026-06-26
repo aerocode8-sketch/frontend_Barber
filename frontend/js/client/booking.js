@@ -36,14 +36,14 @@ let horasBloqueadas = [];
 
 // Horarios disponibles para mostrar cuando el usuario elija un día.
 const availableHours = [
-  "8:00 AM",
-  "8:30 AM",
   "9:00 AM",
   "9:30 AM",
   "10:00 AM",
   "10:30 AM",
   "11:00 AM",
   "11:30 AM",
+  "12:00 PM",
+  "12:30 PM",
   "2:00 PM",
   "2:30 PM",
   "3:00 PM",
@@ -55,6 +55,7 @@ const availableHours = [
   "6:00 PM",
   "6:30 PM",
   "7:00 PM",
+  "7:30 PM"
 ];
 
 // Días de la semana para construir el calendario.
@@ -377,7 +378,34 @@ function renderHours() {
 
   scheduleMessage.textContent = `Horarios disponibles para ${selectedDay}.`;
 
-  availableHours.forEach((hour) => {
+  let horasDisponibles = [...availableHours];
+
+  const diaSemana = selectedDate.getDay();
+
+  // Lunes (1) a Viernes (5)
+  if (diaSemana >= 1 && diaSemana <= 5) {
+
+    horasDisponibles = horasDisponibles.filter(
+      hora =>
+        hora !== "09:00 AM" &&
+        hora !== "09:30 AM" &&
+        hora !== "12:30 PM"
+    );
+
+  }
+
+  // Domingo (0)
+  if (diaSemana === 0) {
+
+    hoursContainer.innerHTML = "";
+    scheduleMessage.textContent =
+      "La barbería no atiende los domingos.";
+
+    return;
+
+  }
+
+  horasDisponibles.forEach((hour) => {
     const horaBackend =
       convertirHora(hour);
 
