@@ -31,32 +31,7 @@ let selectedDate = null;
 let selectedDateISO = null; // Para guardar la fecha en formato ISO para el backend (YYYY-MM-DD).
 
 let availableBarbers = [];
-let horasOcupadas = [];
-let horasBloqueadas = [];
-
-// Horarios disponibles para mostrar cuando el usuario elija un día.
-const availableHours = [
-  "9:00 AM",
-  "9:30 AM",
-  "10:00 AM",
-  "10:30 AM",
-  "11:00 AM",
-  "11:30 AM",
-  "12:00 PM",
-  "12:30 PM",
-  "2:00 PM",
-  "2:30 PM",
-  "3:00 PM",
-  "3:30 PM",
-  "4:00 PM",
-  "4:30 PM",
-  "5:00 PM",
-  "5:30 PM",
-  "6:00 PM",
-  "6:30 PM",
-  "7:00 PM",
-  "7:30 PM"
-];
+let horasDisponibles = [];
 
 // Días de la semana para construir el calendario.
 const weekDays = [
@@ -176,7 +151,8 @@ function updateSummary() {
 
 }
 
-async function cargarHorasOcupadas() {
+
+async function cargarDisponibilidad() {
 
   if (!selectedBarber || !selectedDateISO) {
     return;
@@ -185,99 +161,29 @@ async function cargarHorasOcupadas() {
   try {
 
     const response = await fetch(
-      `${API_URL}/api/citas/barbero/${selectedBarber}`
+      `${API_URL}/api/disponibilidad/${selectedBarber}/${selectedDateISO}`
     );
 
-    const citas = await response.json();
+    if (!response.ok) {
+      throw new Error("Error obteniendo disponibilidad");
+    }
 
-    horasOcupadas = citas
-      .filter(
-        cita => cita.fecha_cita.split("T")[0] === selectedDateISO
-      )
-      .map(
-        cita => cita.hora_cita
-      );
+    const data = await response.json();
+
+    horasDisponibles = data;
+
+    renderHours();
 
   } catch (error) {
 
     console.error(
-      "Error obteniendo horas ocupadas:",
+      "Error obteniendo disponibilidad:",
       error
     );
 
   }
 
 }
-
-async function cargarBloqueos() {
-
-  if (!selectedBarber || !selectedDateISO) {
-    return;
-  }
-
-  try {
-
-    const response = await fetch(
-      `${API_URL}/api/bloqueos/barbero/${selectedBarber}`
-    );
-
-    const bloqueos =
-      await response.json();
-
-    horasBloqueadas = [];
-
-    bloqueos
-      .filter(
-        bloqueo =>
-          bloqueo.fecha.split("T")[0] === selectedDateISO
-      )
-      .forEach((bloqueo) => {
-
-        let horaActual =
-          bloqueo.hora_ini.substring(0, 5);
-
-        const horaFin =
-          bloqueo.hora_fin.substring(0, 5);
-
-        while (horaActual < horaFin) {
-
-          horasBloqueadas.push(
-            `${horaActual}:00`
-          );
-
-          const [h, m] =
-            horaActual.split(":");
-
-          const fecha =
-            new Date();
-
-          fecha.setHours(
-            Number(h)
-          );
-
-          fecha.setMinutes(
-            Number(m) + 30
-          );
-
-          horaActual =
-            fecha
-              .toTimeString()
-              .substring(0, 5);
-        }
-
-      });
-
-
-  } catch (error) {
-
-    console.error(
-      "Error obteniendo bloqueos:",
-      error
-    );
-
-  }
-}
-
 
 fetch(
   `${API_URL}/api/barberos`
@@ -344,9 +250,7 @@ function renderBarbers() {
       selectedHour = null;
       selectedDate = null;
       selectedDateISO = null;
-      horasOcupadas = [];
-      horasBloqueadas = [];
-
+      horasDisponibles = [];
 
       updateSummary();
       renderDays();
@@ -378,79 +282,63 @@ function renderHours() {
 
   scheduleMessage.textContent = `Horarios disponibles para ${selectedDay}.`;
 
-  let horasDisponibles = [...availableHours];
+  horasDisponibles.forEach((horaBackend) => {
 
-  const diaSemana = selectedDate.getDay();
+    const [hora24, minutos] = horaBackend.split(":");
 
-  // Lunes (1) a Viernes (5)
-  if (diaSemana >= 1 && diaSemana <= 5) {
+    let hora = parseInt(hora24);
 
-    horasDisponibles = horasDisponibles.filter(
-      hora =>
-        hora !== "09:00 AM" &&
-        hora !== "09:30 AM" &&
-        hora !== "12:30 PM"
-    );
+    let periodo = "AM";
 
-  }
+    if (hora >= 12) {
+      periodo = "PM";
 
-  // Domingo (0)
-  if (diaSemana === 0) {
+      if (hora > 12) {
+        hora -= 12;
+      }
 
-    hoursContainer.innerHTML = "";
-    scheduleMessage.textContent =
-      "La barbería no atiende los domingos.";
+    }
 
-    return;
+    if (hora === 0) {
+      hora = 12;
+    }
 
-  }
-
-  horasDisponibles.forEach((hour) => {
-    const horaBackend =
-      convertirHora(hour);
-
-    const estaOcupada =
-      horasOcupadas.includes(
-        horaBackend
-      );
-
-    const estaBloqueada =
-      horasBloqueadas.includes(
-        horaBackend
-      );
+    const hour = `${hora}:${minutos} ${periodo}`;
 
     const hourButton = document.createElement("button");
     hourButton.type = "button";
     hourButton.classList.add("calendar", "hour-btn");
     hourButton.innerHTML = `<p>${hour}</p>`;
-
-    // Si la fecha seleccionada es hoy, deshabilitamos las horas que ya pasaron.
     const now = new Date();
-    const isSelectedToday = selectedDate && selectedDate.toDateString() === now.toDateString();
-    const slotDate = hourStringToDate(selectedDate || now, hour);
 
-    if (estaOcupada || estaBloqueada) {
-      return;
-    }
+    const isSelectedToday =
+      selectedDate &&
+      selectedDate.toDateString() === now.toDateString();
+
+    const slotDate =
+      hourStringToDate(selectedDate || now, hour);
+
     if (isSelectedToday && slotDate && slotDate <= now) {
-      hourButton.classList.add('disabled-hour');
+
+      hourButton.classList.add("disabled-hour");
       hourButton.disabled = true;
-      if (estaOcupada) {
-        hourButton.title = "Horario ocupado";
-      } else if (isSelectedToday && slotDate && slotDate <= now) {
-        hourButton.title = "Hora ya pasada";
-      }
+      hourButton.title = "Hora ya pasada";
 
     } else {
-      hourButton.addEventListener("click", () => {
-        if (hourButton.disabled) return;
-        clearActiveHours();
-        hourButton.classList.add("active-hour");
-        selectedHour = hour;
-        updateSummary();
-      });
-    }
 
+      hourButton.addEventListener("click", () => {
+
+        clearActiveHours();
+
+        hourButton.classList.add("active-hour");
+
+        selectedHour = hour;
+
+        updateSummary();
+
+      });
+
+    }
     hoursContainer.appendChild(hourButton);
   });
 }
@@ -516,9 +404,7 @@ function renderDays() {
 
       // Al cambiar de día, limpiamos la selección de horas.
       updateSummary();
-      await cargarHorasOcupadas();
-      await cargarBloqueos();
-      renderHours();
+      await cargarDisponibilidad();
       clearActiveHours();
     });
 
