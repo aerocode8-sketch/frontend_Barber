@@ -460,6 +460,7 @@ if (confirmButton) {
         alert(
           "Cita creada exitosamente"
         );
+        window.location.href = "../../../index.html";
 
       })
       .catch((error) => {
