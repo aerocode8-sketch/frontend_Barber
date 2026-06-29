@@ -35,29 +35,29 @@ let horasDisponibles = [];
 
 // Días de la semana para construir el calendario.
 const weekDays = [
-  "domingo",
-  "lunes",
-  "martes",
-  "miércoles",
-  "jueves",
-  "viernes",
-  "sábado"
+  "Domingo",
+  "Lunes",
+  "Martes",
+  "Miércoles",
+  "Jueves",
+  "Viernes",
+  "Sábado"
 ];
 
 // Meses para mostrar el nombre correcto del mes.
 const months = [
-  "enero",
-  "febrero",
-  "marzo",
-  "abril",
-  "mayo",
-  "junio",
-  "julio",
-  "agosto",
-  "septiembre",
-  "octubre",
-  "noviembre",
-  "diciembre"
+  "Enero",
+  "Febrero",
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septiembre",
+  "Octubre",
+  "Noviembre",
+  "Diciembre"
 ];
 
 // Convierte una hora en formato "8:30 AM" a un objeto Date con la misma fecha que baseDate.
@@ -373,7 +373,7 @@ function renderDays() {
     }
 
     dayButton.innerHTML = `
-      <p>${isToday ? "hoy" : dayName}</p>
+      <p>${isToday ? "Hoy" : dayName}</p>
       <p class="num">${dayNumber}</p>
       <p>${monthName}</p>
     `;
