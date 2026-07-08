@@ -80,9 +80,17 @@
   font-size: 0.95rem;
 }
 
-.footer-dev strong {
+.footer-dev a {
   color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.25s ease;
 }
+
+.footer-dev a:hover {
+  color: #ff8c00;
+}
+
 
 /* ================= TABLET ================= */
 
