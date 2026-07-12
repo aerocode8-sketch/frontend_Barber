@@ -1,0 +1,44 @@
+body {
+    background-color: #0f1115;
+    /* color de fondo de privacidad */
+    color: white;
+    /* color del texto en privacidad */
+    font-family: 'Inter', sans-serif;
+    /* fuente del texto*/
+    min-height: 100vh;
+    /* altura mínima del cuerpo para ocupar toda la pantalla */
+    display: flex;
+    /* usar flexbox para centrar el contenido */
+    justify-content: center;
+    /* centrar horizontalmente el contenido */
+    align-items: flex-start;
+    /* centrar verticalmente el contenido */
+    padding: 40px 20px;
+    /* espacio alrededor del contenido */
+}
+
+.cont-privacy {
+    width: 82%;
+    /* ancho del contenedor de privacidad */
+    max-width: 380px;
+    /* ancho máximo del contenedor de privacidad */
+    padding: 25px;
+    /* espacio interno del contenedor de privacidad */
+    background-color: #1a1d23;
+    /* color de fondo del contenedor de privacidad */
+    border-radius: 20px;
+    /* bordes redondeados del contenedor de privacidad */
+}
+
+.privacy-container {
+    display: flex;
+    /* usar flexbox para centrar el contenido del formulario de privacidad */
+    flex-direction: column;
+    /* dirección de los elementos del formulario en columna */
+}
+
+.privacy-container h1,
+.privacy-container h2 {
+    color: #ff8c00;
+    margin-bottom: 10px;
+}
