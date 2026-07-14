@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let appointments = [];
 
-    const timeSlots = ['09:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM', '07:00 PM'];
+    let timeSlots = [];
 
     const buttons = document.querySelectorAll('.nav-btn-item');
     const sections = document.querySelectorAll('.tab-content');
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     convertirHora24(slot);
 
                 const horaFin =
-                    sumarUnaHora(
+                    sumarCuarentaMinutos(
                         horaIni.substring(0, 5)
                     );
 
@@ -402,7 +402,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    async function cargarFranjasHorario() {
 
+        try {
+
+            const fecha = toKey(appState.selectedDate);
+
+            const response =
+                await fetch(
+                    `${API_URL}/api/horarios/franjas/${barbero.id_barbero}/${fecha}`
+                );
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Error obteniendo las franjas horarias"
+                );
+
+            }
+
+            const data =
+                await response.json();
+
+            timeSlots =
+                data.map(
+                    convertirHora12
+                );
+            renderSelectedDay();
+
+        } catch (error) {
+
+            console.error(
+                "Error cargando franjas:",
+                error
+            );
+
+            timeSlots = [];
+
+        }
+
+    }
 
     function activateTab(tabId) {
         buttons.forEach((item) => item.classList.toggle('active', item.dataset.tab === tabId));
@@ -422,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderStats();
     }
 
-    function sumarUnaHora(hora24) {
+    function sumarCuarentaMinutos(hora24) {
 
         const [h, m] = hora24.split(":");
 
@@ -432,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fecha.setMinutes(Number(m));
         fecha.setSeconds(0);
 
-        fecha.setHours(fecha.getHours() + 1);
+        fecha.setMinutes(fecha.getMinutes() + 40);
 
         return fecha.toTimeString().substring(0, 8);
     }
@@ -609,11 +648,17 @@ document.addEventListener('DOMContentLoaded', () => {
             dayButton.className = ['day', isToday ? 'today' : '', isSelected ? 'selected' : '', blockInfo ? 'has-block' : '', blockInfo?.fullDay ? 'blocked' : ''].filter(Boolean).join(' ');
             dayButton.textContent = dayNumber;
             dayButton.title = formatDate(key);
-            dayButton.addEventListener('click', () => {
-                appState.selectedDate = currentDate;
-                renderCalendar();
-                renderSelectedDay();
-            });
+            dayButton.addEventListener(
+                "click",
+                async () => {
+                    appState.selectedDate =
+                        currentDate;
+                    await cargarFranjasHorario();
+                    renderCalendar();
+                    renderSelectedDay();
+                }
+            );
+
 
             calendarDays.appendChild(dayButton);
         }
@@ -910,6 +955,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         await cargarBloqueosBD();
         await cargarCitasBD();
+        await cargarFranjasHorario();
 
         renderCalendar();
         renderSelectedDay();
