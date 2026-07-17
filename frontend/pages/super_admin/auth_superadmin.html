@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login para superadministradores de la barbería.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../assets/images/Logoplatinum.JPG" type="image/png">
+    <link rel="shortcut icon" href="../../assets/images/Logoplatinum.JPG" type="image/png">
+    <link rel="stylesheet" href="../../css/admin/auth_admin.css">
+    <title>Barbería Platinum | Login Superadministrador</title>
+</head>
+
+<body>
+    <main class="login-cont">
+        <form class="form-cont" id="form" novalidate>
+            <img src="../../assets/images/barberadmin.png" alt="Logo" class="logo">
+            <h1>Panel de Superadministradores</h1>
+            <p>Gestiona tu barbería fácilmente</p>
+
+            <div class="field">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required placeholder="Tu correo electrónico">
+            </div>
+
+            <div class="field">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required minlength="8"
+                    autocomplete="current-password" placeholder="Tu contraseña">
+            </div>
+
+            <div class="extra-options">
+                <a href="../admin/forgot_password.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <button type="submit">Continuar</button>
+
+            <p class="form-message" id="formMessage" aria-live="polite"></p>
+
+        </form>
+    </main>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/super_admin/auth_superadmin.js"></script>
+</body>
+
+</html>

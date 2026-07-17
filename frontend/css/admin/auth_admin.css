@@ -65,6 +65,11 @@ body {
     /* dirección de los elementos del campo de entrada en columna */
 }
 
+.field input {
+    font-size: 16px;
+    /* tamaño de fuente de los campos de entrada */
+}
+
 .form-cont button {
     margin-top: 15px;
     /* espacio superior del botón de login */
