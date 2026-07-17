@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crud para superadministradores de la barbería.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../assets/images/Logoplatinum.JPG" type="image/png">
+    <link rel="shortcut icon" href="../../assets/images/Logoplatinum.JPG" type="image/png">
+    <link rel="stylesheet" href="../../css/super_admin/crud_service.css">
+    <title>Barbería Platinum | Gestion de servicios</title>
+</head>
+
+<body>
+
+    <main>
+        <section class="sect-ges">
+            <h1>Gestión de Servicios</h1>
+            <p>En esta sección, puedes gestionar los servicios ofrecidos por la barbería. Puedes agregar nuevos
+                servicios, editar los existentes o eliminarlos según sea necesario.</p>
+        </section>
+
+        <section class="service-form-section ">
+            <h2>Agregar Nuevo Servicio</h2>
+            <form class="addService" id="addServiceForm">
+
+                <div class="field">
+                    <label for="serviceName">Nombre del Servicio*</label>
+                    <input type="text" id="serviceName" name="serviceName" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+                        placeholder="Nombre del servicio">
+                </div>
+
+                <div class="field">
+                    <label for="serviceDescription">Descripción del Servicio*</label>
+                    <textarea id="serviceDescription" name="serviceDescription" required
+                        placeholder="Descripción del servicio"></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="servicePrice">Precio del Servicio*</label>
+                    <input type="number" id="servicePrice" name="servicePrice" required inputmode="numeric"
+                        placeholder="Precio del servicio">
+                </div>
+
+                <div class="field">
+                    <label for="serviceDuration">Duración del Servicio (en minutos)*</label>
+                    <input type="number" id="serviceDuration" name="serviceDuration" required inputmode="numeric"
+                        placeholder="Duración del servicio">
+                </div>
+
+                <button type="submit">Agregar Servicio</button>
+            </form>
+        </section>
+
+        <section class="services-list">
+            <h2>Servicios registrados</h2>
+            <div id="servicesContainer"></div>
+        </section>
+
+    </main>
+
+    <footer class="admin-footer">
+        <p>© <span id="year"></span> Barbería Platinum. Panel Administrativo</p>
+        <p>Administración general del sistema.</p>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/super_admin/crud_service.js"></script>
+</body>
+
+</html>

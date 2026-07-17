@@ -111,6 +111,7 @@ body {
     /* bordes redondeados para los campos de entrada */
     padding: 10px;
     /* espacio interno de los campos de entrada */
+    font-size: 16px;
 }
 
 .field label {
