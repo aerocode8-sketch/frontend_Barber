@@ -131,12 +131,12 @@ function handleSubmit(event) {
             }
 
             localStorage.setItem(
-                "token",
+                "tokenSuperAdmin",
                 data.token
             );
 
             localStorage.setItem(
-                "superadmin",
+                "superAdmin",
                 JSON.stringify(
                     data.superadmin
                 )

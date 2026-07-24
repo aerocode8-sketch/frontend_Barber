@@ -186,7 +186,7 @@ async function cargarDisponibilidad() {
 }
 
 fetch(
-  `${API_URL}/api/barberos`
+  `${API_URL}/api/barberos/activos`
 )
   .then(async (response) => {
 

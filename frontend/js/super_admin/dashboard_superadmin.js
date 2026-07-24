@@ -1,12 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
+function cerrarSesion() {
 
-    const token = localStorage.getItem("token");
+    localStorage.removeItem(
+        "tokenSuperAdmin"
+    );
 
-    if (!token) {
+    localStorage.removeItem(
+        "superAdmin"
+    );
 
-        window.location.href =
-            "auth_superadmin.html";
+    window.location.href =
+        "auth_superadmin.html";
 
-        return;
-    }
-});
+}
