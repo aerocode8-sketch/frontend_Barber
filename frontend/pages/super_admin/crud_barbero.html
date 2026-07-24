@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard para superadministradores de la barbería.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../assets/images/Logoplatinum.JPG" type="image/png">
+    <link rel="shortcut icon" href="../../assets/images/Logoplatinum.JPG" type="image/png">
+    <link rel="stylesheet" href="../../css/super_admin/dashboard_superadmin.css">
+    <title>Barbería Platinum| Gestión de barberos</title>
+</head>
+
+<body>
+
+    <main>
+        <section class="sect-ges">
+            <h1>Gestión de barberos</h1>
+            <p>En esta sección, puedes gestionar los barberos de la barbería. Puedes editar los barberos existentes
+                según sea necesario.</p>
+        </section>
+
+        <section id="barberFormSection" class="barber-form-section hidden">
+            <h2 id="formTitle">Información del Barbero</h2>
+            <form class="editbarber" id="editBarber">
+
+                <div class="field">
+                    <label for="barberName">Nombre del barbero*</label>
+                    <input type="text" id="barberName" name="barberName" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+                        placeholder="Nombre del barbero">
+                </div>
+
+                <div class="field">
+                    <label for="barberLastName">Apellido del barbero*</label>
+                    <input type="text" id="barberLastName" name="barberLastName" required
+                        pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" placeholder="Apellido del barbero">
+                </div>
+
+                <div class="field">
+                    <label for="barberEmail">Correo del Barbero*</label>
+                    <input type="email" id="barberEmail" name="barberEmail" required placeholder="Correo del barbero">
+                </div>
+
+                <div class="field">
+                    <label for="barberPhone">Numero de Telefono*</label>
+                    <input type="tel" id="barberPhone" name="barberPhone" required pattern="[0-9]{10}"
+                        inputmode="numeric" placeholder="Número de teléfono">
+                </div>
+
+                <div class="field">
+                    <label for="barberImage">Foto del Barbero*</label>
+                    <input type="file" id="barberImage" accept="image/*" placeholder="Foto del barbero">
+                </div>
+
+                <button type="submit">Guardar cambios</button>
+            </form>
+        </section>
+
+        <section class="barbers-list">
+            <h2>Barberos registrados</h2>
+            <div id="barbersContainer"></div>
+        </section>
+
+    </main>
+
+    <footer class="admin-footer">
+        <p>© <span id="year"></span> Barbería Platinum. Panel Administrativo</p>
+        <p>Administración general del sistema.</p>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/super_admin/security_superadmin.js"></script>
+    <script src="../../js/super_admin/crud_barbero.js"></script>
+</body>
+
+</html>

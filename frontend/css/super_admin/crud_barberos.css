@@ -1,0 +1,137 @@
+body {
+    background-color: #0f1115;
+    color: white;
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.sect-ges h1 {
+    color: #ff8c00;
+}
+
+.sect-ges {
+    text-align: center;
+}
+
+.barber-form-section {
+    width: 90%;
+    /* ancho del contenedor de login 300px*/
+    max-width: 380px;
+    /* ancho máximo del contenedor de login */
+    padding: 25px;
+    /* espacio interno del contenedor de login */
+    background-color: #1a1d23;
+    /* color de fondo del contenedor de login */
+    border-radius: 20px;
+    /* bordes redondeados del contenedor de login */
+    margin: 0 auto;
+}
+
+main h2 {
+    color: #ff8c00;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.field {
+    margin-bottom: 10px;
+}
+
+.editbarber button {
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.field label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    color: #ffffff;
+}
+
+.field input {
+    background-color: #2a2d35;
+    /* color de fondo de los campos de entrada */
+    color: #aaaaaa;
+    /* color del texto de los campos de entrada */
+    border: 1px solid #333333;
+    /* borde de los campos de entrada */
+    border-radius: 8px;
+    /* bordes redondeados para los campos de entrada */
+    padding: 10px;
+    /* espacio interno de los campos de entrada */
+    width: 100%;
+    /* ancho de los campos de entrada */
+    box-sizing: border-box;
+    /* para incluir el padding en el ancho total del campo de entrada */
+    font-size: 16px;
+    /* tamaño de fuente de los campos de entrada */
+}
+
+.barbers-list {
+    width: 90%;
+    /* ancho del contenedor de login 300px*/
+    max-width: 900px;
+    /* ancho máximo del contenedor de login */
+    padding: 25px;
+    /* espacio interno del contenedor de login */
+    background-color: #1a1d23;
+    /* color de fondo del contenedor de login */
+    border-radius: 20px;
+    /* bordes redondeados del contenedor de login */
+    margin: 40px auto 0 auto;
+}
+
+#barbersContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.barber-card {
+    background-color: #2a2d35;
+    border-radius: 16px;
+    padding: 18px;
+    border: 1px solid #3a3d45;
+}
+
+.barber-card h3 {
+    margin: 0 0 15px;
+    color: #ff8c00;
+    font-size: 1.2rem;
+}
+
+.barber-card p {
+    margin: 8px 0;
+    color: #d1d5db;
+    line-height: 1.5;
+}
+
+.barber-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+
+.admin-footer {
+    padding: 18px 0 28px;
+    text-align: center;
+    color: #9ca3af;
+}
+
+.admin-footer p {
+    margin: 4px 0;
+}
